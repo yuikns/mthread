@@ -1,10 +1,3 @@
-/**
- * Thread Test
- * 编译后面要加上 -lrt
- * For Example
- * gcc mutex.c -o mutex -I/usr/include -L/usr/lib -lncurses -lrt
- */
-
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -12,7 +5,6 @@
 #include <ctime>
 #include <unistd.h>
 #include <pthread.h>
-//#include <ctype.h>
 #include <string>
 #include <vector>
 #include <map>
@@ -87,27 +79,6 @@ void * load_thread(void * __item)
 	return NULL;
 }
 
-/*
-bool rsleep(int t,bool r);
-bool rsleep(int t,int r)
-{
-	clock_t start;
-	clock_t end;
-	int mix ;
-	mix = r == 0  ? 0 : rand()%r;
-	//printf("[mix:%d]",mix);
-	if(CLOCKS_PER_SEC != 1000)
-	{
-		t = (double)t / 1000 * CLOCKS_PER_SEC;
-		mix = (double)mix / 1000 * CLOCKS_PER_SEC;
-		//printf("[m-2:%d~%d]",mix,CLOCKS_PER_SEC);
-	}
-	start = clock();
-	while((clock()-start)<t+mix);
-	return true;
-}
-*/
-
 void show(const char * h , map<int,char> & info )
 {
 	for(map<int,char>::iterator iter = info.begin(); iter!= info.end(); ++iter)
@@ -131,7 +102,7 @@ int main(int argc, char *argv[])
 	
 	pthread_t  * pt = new pthread_t[map_size];
 	
-	string dir("dir/");
+	string dir("pf_");
 	
 	fprintf(stdout,"store into file\n");
 	idx_item * item = new idx_item[map_size];
